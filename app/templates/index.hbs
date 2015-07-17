@@ -1,18 +1,22 @@
 <div class="form-group">
   <label>State</label>
-  <div class="combobox-container">
-    <input type="hidden" name="normal" value="" />
+  {{#rr-combobox class="combobox-container" as |isDropdownVisible|}}
     <div class="input-group">
-      <input type="text" autocomplete="off" placeholder="Select a State" class="combobox input-large form-control">
-      <ul class="typeahead typeahead-long dropdown-menu" style="top: 34px; left: 0px; display: none;">
-        <li data-value="Florida" class="active">
-          <a href="#"><strong>Florida</strong></a>
-        </li>
-      </ul>
-      <span class="input-group-addon dropdown-toggle" data-dropdown="dropdown">
+      {{rr-combobox-input value=currentArtist.name type="text" class="combobox input-large form-control" placeholder="Select an artist"}}
+      {{#rr-combobox-items isVisible=isDropdownVisible class="typeahead typeahead-long dropdown-menu"}}
+        {{#each artists as |artist|}}
+          {{#rr-combobox-item
+              item=artist
+              on-click=(action "selectArtist" artist)
+              class=(if (eq selectedArtist.id artist.id) 'active')}}
+            <a href="#"><strong>{{artist.name}}</strong></a>
+          {{/rr-combobox-item}}
+        {{/each}}
+      {{/rr-combobox-items}}
+      {{#rr-combobox-dropdown-toggle class="input-group-addon dropdown-toggle"}}
         <span class="caret"></span>
         <span class="glyphicon glyphicon-remove"></span>
-      </span>
+      {{/rr-combobox-dropdown-toggle}}
     </div>
-  </div>
+  {{/rr-combobox}}
 </div>

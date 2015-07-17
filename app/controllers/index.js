@@ -9,7 +9,7 @@ const artists = [
 ];
 
 export default Ember.Controller.extend({
-  currentArtist: 1,
+  selectedArtist: null,
 
   init() {
     this._super(...arguments);
@@ -17,20 +17,8 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    artistChanged(inputValue, selectedArtist) {
-      // const matchingArtists = artists.filter(function(artist) {
-      //   return artist.name.toLowerCase().indexOf(inputValue) !== -1;
-      // });
-      // this.set('artists', matchingArtists);
-      console.log('artistChanged', inputValue);
-    },
-
-    selectArtist(selectedId, selectedOption) {
-      // const selectedArtist = artists.find(function(artist) {
-      //   return artist.id === selectedId;
-      // });
-      // this.set('currentArtist', selectedArtist);
-      console.log('selectArtist', selectedId);
+    selectArtist(artist) {
+      this.set('selectedArtist', artist);
     }
   }
 });
