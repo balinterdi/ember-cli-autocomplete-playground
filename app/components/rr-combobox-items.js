@@ -5,6 +5,6 @@ export default Ember.Component.extend({
   attributeBindings: 'style'.w(),
 
   style: Ember.computed('isVisible', function() {
-    return this.get('isVisible') ? "display:block" : "display:none"
+    return this.get('isVisible') ? "display:block" : "display:none";
   })
 });
