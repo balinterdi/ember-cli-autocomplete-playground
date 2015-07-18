@@ -11,16 +11,16 @@
           type="text"
           class="combobox input-large form-control"
           placeholder="Select an artist"}}
-      {{#rr-combobox-items isVisible=isDropdownVisible class="typeahead typeahead-long dropdown-menu"}}
+      {{#rr-combobox-list isVisible=isDropdownVisible class="typeahead typeahead-long dropdown-menu"}}
         {{#each matchingArtists as |artist|}}
-          {{#rr-combobox-item
+          {{#rr-combobox-option
               item=artist
               on-click=onSelect
               class=(if (eq selectedArtist.id artist.id) 'active')}}
             <a href="#"><strong>{{artist.name}}</strong></a>
-          {{/rr-combobox-item}}
+          {{/rr-combobox-option}}
         {{/each}}
-      {{/rr-combobox-items}}
+      {{/rr-combobox-list}}
       {{#rr-combobox-dropdown-toggle class="input-group-addon dropdown-toggle"}}
         <span class="caret"></span>
         <span class="glyphicon glyphicon-remove"></span>
