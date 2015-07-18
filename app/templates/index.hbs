@@ -19,6 +19,8 @@
               class=(if (eq selectedArtist.id artist.id) 'active')}}
             <a href="#"><strong>{{artist.name}}</strong></a>
           {{/rr-combobox-option}}
+        {{else}}
+          <li><a href="#">No results.</a></li>
         {{/each}}
       {{/rr-combobox-list}}
       {{#rr-combobox-dropdown-toggle class="input-group-addon dropdown-toggle"}}
