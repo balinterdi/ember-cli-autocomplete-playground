@@ -13,10 +13,18 @@ export default Ember.Controller.extend({
 
   init() {
     this._super(...arguments);
-    this.set('artists', artists);
+    this.set('matchingArtists', artists);
   },
 
   actions: {
+    filterArtists(searchTerm) {
+      searchTerm = searchTerm.toLowerCase();
+      const matchingArtists = artists.filter(function(artist) {
+        return artist.name.toLowerCase().indexOf(searchTerm) !== -1;
+      });
+      this.set('matchingArtists', matchingArtists);
+    },
+
     selectArtist(artist) {
       this.set('selectedArtist', artist);
     }

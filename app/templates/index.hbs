@@ -1,13 +1,21 @@
 <div class="form-group">
-  <label>State</label>
-  {{#rr-combobox class="combobox-container" as |isDropdownVisible|}}
+  <label>Choose an artist</label>
+  {{#rr-combobox
+        on-select=(action "selectArtist")
+        on-input=(action "filterArtists")
+        class="combobox-container" as |isDropdownVisible onSelect onInput|}}
     <div class="input-group">
-      {{rr-combobox-input value=currentArtist.name type="text" class="combobox input-large form-control" placeholder="Select an artist"}}
+      {{rr-combobox-input
+          value=selectedArtist.name
+          on-change=onInput
+          type="text"
+          class="combobox input-large form-control"
+          placeholder="Select an artist"}}
       {{#rr-combobox-items isVisible=isDropdownVisible class="typeahead typeahead-long dropdown-menu"}}
-        {{#each artists as |artist|}}
+        {{#each matchingArtists as |artist|}}
           {{#rr-combobox-item
               item=artist
-              on-click=(action "selectArtist" artist)
+              on-click=onSelect
               class=(if (eq selectedArtist.id artist.id) 'active')}}
             <a href="#"><strong>{{artist.name}}</strong></a>
           {{/rr-combobox-item}}
