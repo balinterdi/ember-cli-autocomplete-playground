@@ -18,6 +18,6 @@ export default Ember.Component.extend({
 
   toggleDropdown: Ember.on('click', function() {
     const item = this.get('item');
-    this.get('on-click')(item);
+    this.get('on-click')(item, this.get('label'));
   })
 });

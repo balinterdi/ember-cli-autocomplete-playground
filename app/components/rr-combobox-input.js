@@ -9,10 +9,5 @@ export default Ember.TextField.extend({
   valueDidChange: Ember.on('input', function() {
     const value = this.$().val();
     this.get('on-change')(value);
-  }),
-
-  updateValue() {
-    const value = this.get('value');
-    this.$().val(value);
-  },
+  })
 });

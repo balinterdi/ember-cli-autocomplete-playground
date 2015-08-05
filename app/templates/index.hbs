@@ -3,12 +3,10 @@
   {{#rr-combobox
         on-select=(action "selectArtist")
         on-input=(action "filterArtists")
-        class="combobox-container" as |combobox isDropdownVisible onSelect onInput|}}
+        class="combobox-container" as |combobox isDropdownVisible inputValue onSelect onInput|}}
     <div class="input-group">
-      <!-- FIXME: Due to two-way bindings between the input's value and selectedArtist.name,
-           anything typed in the box will overwrite the selectedArtist's name. -->
       {{rr-combobox-input
-          value=selectedArtist.name
+          value=inputValue
           on-change=onInput
           type="text"
           class="combobox input-large form-control"
