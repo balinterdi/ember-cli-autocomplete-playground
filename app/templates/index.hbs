@@ -14,8 +14,10 @@
       {{#rr-combobox-list combobox=combobox isVisible=isDropdownVisible class="typeahead typeahead-long dropdown-menu" as |list|}}
         {{#each matchingArtists as |artist|}}
           {{#rr-combobox-option
-              list=list
+              id=artist.id
+              label=artist.name
               item=artist
+              list=list
               on-click=onSelect
               class=(if (eq selectedArtist.id artist.id) 'active')}}
             <a href="#"><strong>{{artist.name}}</strong></a>

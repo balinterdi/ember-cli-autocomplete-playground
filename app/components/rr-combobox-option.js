@@ -4,6 +4,8 @@ export default Ember.Component.extend({
   tagName: 'li',
 
   list: null,
+  id: null,
+  label: null,
   item: null,
 
   registerWithList: Ember.on('didInsertElement', function() {
