@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  "on-select": null,
+  "on-input": null,
+
   isDropdownVisible: false,
   input: null,
   list: null,
@@ -33,10 +36,13 @@ export default Ember.Component.extend({
     inputDidChange(value) {
       this.get('on-input')(value);
       this.set('isDropdownVisible', true);
-      const firstItem = this.get('list.firstOptionItem');
-      if (firstItem) {
-        this.get('on-select')(firstItem);
-      }
+      Ember.run.scheduleOnce('afterRender', this, function() {
+        const firstOption = this.get('list.firstOption');
+        if (firstOption) {
+          this.get('on-select')(firstOption.get('item'));
+          this.get('input.element').setSelectionRange(value.length, firstOption.get('label').length);
+        }
+      });
     }
   }
 });

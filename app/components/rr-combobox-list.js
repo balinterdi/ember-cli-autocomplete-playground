@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   combobox: null,
   options: Ember.A(),
 
-  firstOptionItem: Ember.computed.reads('options.firstObject.item'),
+  firstOption: Ember.computed.reads('options.firstObject'),
 
   registerOption(option) {
     this.get('options').pushObject(option);

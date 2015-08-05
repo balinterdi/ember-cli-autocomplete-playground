@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
     filterArtists(searchTerm) {
       searchTerm = searchTerm.toLowerCase();
       const matchingArtists = artists.filter(function(artist) {
-        return artist.name.toLowerCase().indexOf(searchTerm) !== -1;
+        return artist.name.toLowerCase().indexOf(searchTerm) === 0;
       });
       this.set('matchingArtists', matchingArtists);
     },
