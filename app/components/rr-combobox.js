@@ -57,9 +57,12 @@ export default Ember.Component.extend({
         }
         const firstOption = this.get('list.firstOption');
         if (firstOption) {
+          const autocompletedLabel = firstOption.get('label');
           this.get('on-select')(firstOption.get('item'));
-          this.set('inputValue', firstOption.get('label'));
-          // this.get('input.element').setSelectionRange(value.length, firstOption.get('label').length);
+          this.set('inputValue', autocompletedLabel);
+          Ember.run.next(this, () => {
+            this.get('input.element').setSelectionRange(value.length, autocompletedLabel.length);
+          });
         }
       });
     }
