@@ -9,6 +9,8 @@ export default Ember.Component.extend({
   inputValue: '',
   list: null,
 
+  isBackspacing: false,
+
   registerInput(input) {
     this.set('input', input);
   },
@@ -21,6 +23,23 @@ export default Ember.Component.extend({
     this.toggleProperty('isDropdownVisible');
   },
 
+  keydownMap: {
+    8: 'startBackspacing' // backspace
+  },
+
+  startBackspacing: function() {
+    this.set('isBackspacing', true);
+  },
+
+  handleKeydown: Ember.on('keyDown', function(event) {
+    const map = this.get('keydownMap');
+    const code = event.keyCode;
+    const method = map[code];
+    if (method) {
+      return this[method](event);
+    }
+  }),
+
   actions: {
     selectItem(item, value) {
       this.get('on-select')(item);
@@ -32,6 +51,10 @@ export default Ember.Component.extend({
       this.get('on-input')(value);
       this.set('isDropdownVisible', true);
       Ember.run.scheduleOnce('afterRender', this, function() {
+        if (this.get('isBackspacing')) {
+          this.set('isBackspacing', false);
+          return;
+        }
         const firstOption = this.get('list.firstOption');
         if (firstOption) {
           this.get('on-select')(firstOption.get('item'));
