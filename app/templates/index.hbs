@@ -20,7 +20,7 @@
                 item=artist
                 list=list
                 on-click=onSelect
-                class=(if (eq selectedArtist.id artist.id) 'active')}}
+                activeId=selectedArtist.id}}
               <a href="#"><strong>{{artist.name}}</strong></a>
             {{/rr-combobox-option}}
           {{else}}

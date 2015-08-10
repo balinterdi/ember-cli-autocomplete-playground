@@ -44,3 +44,10 @@ html, body {
 .control-group.success .combobox-container .caret {
   border-top-color: #468847;
 }
+
+/* This is copied from .dropdown-menu > li > a:hover in Bootstrap */
+.dropdown-menu > li.focused > a {
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
