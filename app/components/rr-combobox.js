@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   "on-select": null,
   "on-input": null,
 
-  isDropdownVisible: false,
+  isDropdownOpen: false,
   input: null,
   inputValue: '',
   list: null,
@@ -21,11 +21,11 @@ export default Ember.Component.extend({
   },
 
   toggleDropdown() {
-    this.toggleProperty('isDropdownVisible');
+    this.toggleProperty('isDropdownOpen');
   },
 
   openDropdown() {
-    this.set('isDropdownVisible', true);
+    this.set('isDropdownOpen', true);
   },
 
   keydownMap: {
@@ -40,14 +40,14 @@ export default Ember.Component.extend({
   },
 
   selectOption: function() {
-    this.set('isDropdownVisible', false);
+    this.set('isDropdownOpen', false);
   },
 
   focusPrevious: function(event) {
     event.preventDefault();
     const focused = this.get('focusedOption');
     let index = this.get('options').indexOf(focused);
-    if (this.get('isDropdownVisible')) {
+    if (this.get('isDropdownOpen')) {
       index = index - 1;
     }
     this.focusOptionAtIndex(index);
@@ -60,7 +60,7 @@ export default Ember.Component.extend({
     const focused = this.get('focusedOption');
     if (focused) {
       index = this.get('options').indexOf(focused);
-      if (this.get('isDropdownVisible')) {
+      if (this.get('isDropdownOpen')) {
         index = index + 1;
       }
     }
@@ -102,13 +102,13 @@ export default Ember.Component.extend({
   actions: {
     selectItem(item, value) {
       this.get('on-select')(item);
-      this.set('isDropdownVisible', false);
+      this.set('isDropdownOpen', false);
       this.set('inputValue', value);
     },
 
     inputDidChange(value) {
       this.get('on-input')(value);
-      this.set('isDropdownVisible', true);
+      this.set('isDropdownOpen', true);
       Ember.run.scheduleOnce('afterRender', this, function() {
         if (this.get('isBackspacing')) {
           this.set('isBackspacing', false);
