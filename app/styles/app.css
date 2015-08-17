@@ -2,49 +2,6 @@ html, body {
   margin: 20px;
 }
 
-.form-search .autocomplete-container,
-.form-inline .autocomplete-container {
-  display: inline-block;
-  margin-bottom: 0;
-  vertical-align: top;
-}
-.form-search .autocomplete-container .input-group-addon,
-.form-inline .autocomplete-container .input-group-addon {
-  width: auto;
-}
-.combobox-selected .caret {
-  display: none;
-}
-/* :not doesn't work in IE8 */
-.autocomplete-container:not(.combobox-selected) .glyphicon-remove {
-  display: none;
-}
-.typeahead-long {
-  max-height: 300px;
-  overflow-y: auto;
-}
-.control-group.error .autocomplete-container .add-on {
-  color: #B94A48;
-  border-color: #B94A48;
-}
-.control-group.error .autocomplete-container .caret {
-  border-top-color: #B94A48;
-}
-.control-group.warning .autocomplete-container .add-on {
-  color: #C09853;
-  border-color: #C09853;
-}
-.control-group.warning .autocomplete-container .caret {
-  border-top-color: #C09853;
-}
-.control-group.success .autocomplete-container .add-on {
-  color: #468847;
-  border-color: #468847;
-}
-.control-group.success .autocomplete-container .caret {
-  border-top-color: #468847;
-}
-
 /* This is copied from .dropdown-menu > li > a:hover in Bootstrap */
 
 .ember-autocomplete-list > .active > a {
