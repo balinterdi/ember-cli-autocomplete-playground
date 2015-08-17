@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.TextField.extend({
-  autocomplete: null,
+  autocomplete_: null,
 
   registerWithAutocomplete: Ember.on('didInsertElement', function() {
-    this.get('autocomplete').registerInput(this);
+    this.get('autocomplete_').registerInput(this);
   }),
 
   valueDidChange: Ember.on('input', function() {
