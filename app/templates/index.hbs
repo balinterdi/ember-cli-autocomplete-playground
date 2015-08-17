@@ -1,20 +1,21 @@
 <div class="col-md-6">
   <div class="form-group">
     <label>Choose an artist</label>
-    {{#rr-combobox
+    {{#ember-autocomplete
           on-select=(action "selectArtist")
           on-input=(action "filterArtists")
-          class="combobox-container" as |combobox isDropdownOpen inputValue onSelect onInput|}}
+          class="autocomplete-container" as |autocomplete isDropdownOpen inputValue onSelect onInput|}}
       <div class="input-group">
-        {{rr-combobox-input
+        {{ember-autocomplete-input
+            autocomplete=autocomplete
             value=inputValue
             on-change=onInput
             type="text"
             class="combobox input-large form-control"
             placeholder="Select an artist"}}
-        {{#rr-combobox-list combobox=combobox isVisible=isDropdownOpen class="typeahead typeahead-long dropdown-menu" as |list|}}
+        {{#ember-autocomplete-list autocomplete=autocomplete isVisible=isDropdownOpen class="typeahead typeahead-long dropdown-menu" as |list|}}
           {{#each matchingArtists as |artist|}}
-            {{#rr-combobox-option
+            {{#ember-autocomplete-option
                 id=artist.id
                 label=artist.name
                 item=artist
@@ -22,17 +23,17 @@
                 on-click=onSelect
                 activeId=selectedArtist.id}}
               <a href="#">{{artist.name}}</a>
-            {{/rr-combobox-option}}
+            {{/ember-autocomplete-option}}
           {{else}}
             <li><a href="#">No results.</a></li>
           {{/each}}
-        {{/rr-combobox-list}}
-        {{#rr-combobox-dropdown-toggle combobox=combobox class="input-group-addon dropdown-toggle"}}
+        {{/ember-autocomplete-list}}
+        {{#ember-autocomplete-dropdown-toggle autocomplete=autocomplete class="input-group-addon dropdown-toggle"}}
           <span class="caret"></span>
           <span class="glyphicon glyphicon-remove"></span>
-        {{/rr-combobox-dropdown-toggle}}
+        {{/ember-autocomplete-dropdown-toggle}}
       </div>
-    {{/rr-combobox}}
+    {{/ember-autocomplete}}
   </div>
 </div>
 <div class="col-md-6">

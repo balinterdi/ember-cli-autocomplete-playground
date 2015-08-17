@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'li',
-  classNames: 'combobox-option',
+  classNames: 'ember-autocomplete-option',
   classNameBindings: 'isActive:active isFocused:focused'.w(),
 
   list: null,
@@ -17,7 +17,7 @@ export default Ember.Component.extend({
     return this.get('id') === this.get('activeId');
   }),
 
-  combobox: Ember.computed.reads('list.combobox'),
+  autocomplete: Ember.computed.reads('list.autocomplete'),
 
   registerWithList: Ember.on('didInsertElement', function() {
     this.get('list').registerOption(this);

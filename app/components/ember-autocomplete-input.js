@@ -1,9 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.TextField.extend({
+  autocomplete: null,
 
-  registerWithCombobox: Ember.on('didInsertElement', function() {
-    this.get('parentView').registerInput(this);
+  registerWithAutocomplete: Ember.on('didInsertElement', function() {
+    this.get('autocomplete').registerInput(this);
   }),
 
   valueDidChange: Ember.on('input', function() {

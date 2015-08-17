@@ -3,9 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: 'ul',
   attributeBindings: 'style'.w(),
-  classNames: 'rr-combobox-list',
+  classNames: 'ember-autocomplete-list',
 
-  combobox: null,
+  autocomplete: null,
   options: Ember.A(),
 
   firstOption: Ember.computed.reads('options.firstObject'),
@@ -19,7 +19,7 @@ export default Ember.Component.extend({
   },
 
   registerWithAutocomplete: Ember.on('didInsertElement', function() {
-    this.get('combobox').registerList(this);
+    this.get('autocomplete').registerList(this);
   }),
 
   style: Ember.computed('isVisible', function() {
@@ -27,6 +27,6 @@ export default Ember.Component.extend({
   }),
 
   openDropdown() {
-    this.get('combobox').openDropdown();
+    this.get('autocomplete').openDropdown();
   },
 });

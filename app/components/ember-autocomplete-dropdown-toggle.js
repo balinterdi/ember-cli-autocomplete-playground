@@ -4,10 +4,10 @@ export default Ember.Component.extend({
   tagName: 'span',
   'data-dropdown': 'dropdown',
 
-  combobox: null,
+  autocomplete: null,
 
   toggleDropdown: Ember.on('click', function() {
-    this.get('combobox').toggleDropdown();
+    this.get('autocomplete').toggleDropdown();
   })
 
 });
