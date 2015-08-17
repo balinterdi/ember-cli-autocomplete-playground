@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: 'ul',
   attributeBindings: 'style'.w(),
+  classNames: 'rr-combobox-list',
 
   combobox: null,
   options: Ember.A(),
