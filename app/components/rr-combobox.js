@@ -39,10 +39,6 @@ export default Ember.Component.extend({
     this.set('isBackspacing', true);
   },
 
-  selectOption: function() {
-    this.set('isDropdownOpen', false);
-  },
-
   focusPrevious: function(event) {
     event.preventDefault();
     const focused = this.get('focusedOption');
@@ -88,6 +84,15 @@ export default Ember.Component.extend({
     }
     this.set('focusedOption', option);
     option.focus();
+  },
+
+  selectOption: function(event) {
+    event.preventDefault();
+    const focused = this.get('focusedOption');
+    if (focused) {
+      this.send('selectItem', focused.get('item'), focused.get('label'));
+    }
+    this.set('isDropdownOpen', false);
   },
 
   handleKeydown: Ember.on('keyDown', function(event) {
