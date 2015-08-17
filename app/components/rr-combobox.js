@@ -22,10 +22,26 @@ export default Ember.Component.extend({
 
   toggleDropdown() {
     this.toggleProperty('isDropdownOpen');
+    if (!this.get('isDropdownOpen')) {
+      this.removeFocusedOption();
+    }
   },
 
   openDropdown() {
     this.set('isDropdownOpen', true);
+  },
+
+  closeDropdown: function() {
+    this.set('isDropdownOpen', false);
+    this.removeFocusedOption();
+  },
+
+  removeFocusedOption() {
+    const focused = this.get('focusedOption');
+    if (focused) {
+      focused.blur();
+      this.set('focusedOption', null);
+    }
   },
 
   keydownMap: {
@@ -93,10 +109,6 @@ export default Ember.Component.extend({
     if (focused) {
       this.send('selectItem', focused.get('item'), focused.get('label'));
     }
-    this.set('isDropdownOpen', false);
-  },
-
-  closeDropdown: function() {
     this.set('isDropdownOpen', false);
   },
 
