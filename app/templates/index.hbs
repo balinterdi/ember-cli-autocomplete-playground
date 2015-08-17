@@ -37,5 +37,20 @@
   </div>
 </div>
 <div class="col-md-6">
-  Selected artist: {{selectedArtist.id}} {{selectedArtist.name}}
+  <table class="table">
+    <thead>
+      <th>Id</th>
+      <th>Name</th>
+    </thead>
+    <tbody>
+      <tr>
+        {{#if selectedArtist}}
+          <td>{{selectedArtist.id}}</td>
+          <td>{{selectedArtist.name}}</td>
+        {{else}}
+          <td colspan="2">No artist is selected.</td>
+        {{/if}}
+      </tr>
+    </tbody>
+  </table>
 </div>
