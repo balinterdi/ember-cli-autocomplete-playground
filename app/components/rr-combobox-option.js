@@ -34,6 +34,7 @@ export default Ember.Component.extend({
 
   focus: function() {
     this.set('isFocused', true);
+    this.get('list').openDropdown();
   },
 
   blur: function() {

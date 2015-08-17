@@ -46,10 +46,6 @@ export default Ember.Component.extend({
   focusPrevious: function(event) {
     event.preventDefault();
     const focused = this.get('focusedOption');
-    if (!focused) {
-      return;
-    }
-
     let index = this.get('options').indexOf(focused);
     if (this.get('isDropdownVisible')) {
       index = index - 1;
@@ -62,13 +58,11 @@ export default Ember.Component.extend({
     event.preventDefault();
     let index = 0;
     const focused = this.get('focusedOption');
-    if (!focused) {
-      return;
-    }
-
-    index = this.get('options').indexOf(focused);
-    if (this.get('isDropdownVisible')) {
-      index = index + 1;
+    if (focused) {
+      index = this.get('options').indexOf(focused);
+      if (this.get('isDropdownVisible')) {
+        index = index + 1;
+      }
     }
     this.focusOptionAtIndex(index);
   },

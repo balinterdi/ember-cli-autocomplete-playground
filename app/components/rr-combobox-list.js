@@ -24,5 +24,9 @@ export default Ember.Component.extend({
 
   style: Ember.computed('isVisible', function() {
     return this.get('isVisible') ? "display:block" : "display:none";
-  })
+  }),
+
+  openDropdown() {
+    this.get('combobox').openDropdown();
+  },
 });
