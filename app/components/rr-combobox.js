@@ -31,6 +31,7 @@ export default Ember.Component.extend({
   keydownMap: {
     8:  'startBackspacing', // backspace
     13: 'selectOption',  // return
+    27: 'closeDropdown', // escape
     38: 'focusPrevious', // up key
     40: 'focusNext', // down key
   },
@@ -92,6 +93,10 @@ export default Ember.Component.extend({
     if (focused) {
       this.send('selectItem', focused.get('item'), focused.get('label'));
     }
+    this.set('isDropdownOpen', false);
+  },
+
+  closeDropdown: function() {
     this.set('isDropdownOpen', false);
   },
 
