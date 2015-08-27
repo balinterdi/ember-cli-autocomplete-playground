@@ -1,21 +1,21 @@
 <div class="col-md-6">
   <div class="form-group">
     <label>Choose an artist</label>
-    {{#ember-autocomplete
+    {{#auto-complete
           on-select=(action "selectArtist")
           on-input=(action "filterArtists")
           class="autocomplete-container" as |autocomplete isDropdownOpen inputValue onSelect onInput|}}
       <div class="input-group">
-        {{ember-autocomplete-input
+        {{auto-complete-input
             autocomplete_=autocomplete
             value=inputValue
             on-change=onInput
             type="text"
             class="combobox input-large form-control"
             placeholder="Select an artist"}}
-        {{#ember-autocomplete-list autocomplete=autocomplete isVisible=isDropdownOpen class="typeahead typeahead-long dropdown-menu" as |list|}}
+        {{#auto-complete-list autocomplete=autocomplete isVisible=isDropdownOpen class="typeahead typeahead-long dropdown-menu" as |list|}}
           {{#each matchingArtists as |artist|}}
-            {{#ember-autocomplete-option
+            {{#auto-complete-option
                 id=artist.id
                 label=artist.name
                 item=artist
@@ -23,16 +23,16 @@
                 on-click=onSelect
                 activeId=selectedArtist.id}}
               <a href="#">{{artist.name}}</a>
-            {{/ember-autocomplete-option}}
+            {{/auto-complete-option}}
           {{else}}
             <li><a href="#">No results.</a></li>
           {{/each}}
-        {{/ember-autocomplete-list}}
-        {{#ember-autocomplete-dropdown-toggle autocomplete=autocomplete class="input-group-addon dropdown-toggle"}}
+        {{/auto-complete-list}}
+        {{#auto-complete-dropdown-toggle autocomplete=autocomplete class="input-group-addon dropdown-toggle"}}
           <span class="caret"></span>
-        {{/ember-autocomplete-dropdown-toggle}}
+        {{/auto-complete-dropdown-toggle}}
       </div>
-    {{/ember-autocomplete}}
+    {{/auto-complete}}
   </div>
 </div>
 <div class="col-md-6">
